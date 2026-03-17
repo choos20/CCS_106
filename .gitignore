@@ -1,0 +1,31 @@
+# Sensitive files and directories
+vendor/
+composer.lock
+.env
+.env.local
+.DS_Store
+Thumbs.db
+
+# Database files (keep schema, exclude data/InnoDB files)
+ccs_106_db/*.ibd
+ccs_106_db/*.frm
+
+# User uploads
+uploads/*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node modules (if applicable)
+node_modules/
