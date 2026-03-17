@@ -26,9 +26,9 @@ $user_id = $_SESSION['user_id'];
 
 // Safely fetch user data – if columns don't exist, use defaults
 $username = $_SESSION['username']; // fallback
-$brain = 720;
-$stars = 12;
-$bestTime = '45s';
+$brain = 0;
+$stars = 0;
+$bestTime = '00:00';
 
 // Check if the columns exist (optional but safe)
 $columns = $conn->query("SHOW COLUMNS FROM users LIKE 'brain'");
@@ -39,9 +39,9 @@ if ($columns->num_rows > 0) {
     $result = $stmt->get_result();
     if ($row = $result->fetch_assoc()) {
         $username = $row['username'] ?? $username;
-        $brain = $row['brain'] ?? $brain;
-        $stars = $row['stars'] ?? $stars;
-        $bestTime = $row['best_time'] ?? $bestTime;
+        $brain = isset($row['brain']) ? (int)$row['brain'] : $brain;
+        $stars = isset($row['stars']) ? (int)$row['stars'] : $stars;
+        $bestTime = !empty($row['best_time']) ? $row['best_time'] : $bestTime;
     }
     $stmt->close();
 } else {
