@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Hash password & insert user
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
             // Note: email is stored with original case due to case-sensitive validation
-            $stmt = $conn->prepare("INSERT INTO users (fullname, username, email, password, role) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO users (fullname, username, email, password, role, brain, stars, best_time) VALUES (?, ?, ?, ?, ?, 0, 0, NULL)");
             $stmt->bind_param('sssss', $fullname, $username, $email, $password_hash, $role);
 
             if ($stmt->execute()) {
