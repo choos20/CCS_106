@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (strlen($password) !== 8) {
         $error = "Password must be exactly 8 characters.";
     } else {
-        $stmt = $conn->prepare("SELECT id, username, email, password, role FROM users WHERE username = ? OR BINARY email = ?");
+        $stmt = $conn->prepare("SELECT id, username, email, password, role FROM users WHERE BINARY username = ? OR BINARY email = ?");
         $stmt->bind_param("ss", $user, $user);
         $stmt->execute();
         $result = $stmt->get_result();

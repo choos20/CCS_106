@@ -14,7 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password']);
     $confirm  = trim($_POST['confirm']);
 
-    if ($password !== $confirm) {
+    if (strlen($password) !== 8) {
+        $message = "Password must be exactly 8 characters.";
+    } elseif (ctype_digit($password)) {
+        $message = "Password cannot consist of only numbers.";
+    } elseif ($password !== $confirm) {
         $message = "Passwords do not match.";
     } else {
         $hash = password_hash($password, PASSWORD_DEFAULT);

@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Password must contain at least one letter and one special character.";
     } else {
         // Check if username/email exists (email is case-sensitive)
-        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR BINARY email = ? LIMIT 1");
+        $stmt = $conn->prepare("SELECT id FROM users WHERE BINARY username = ? OR BINARY email = ? LIMIT 1");
         $stmt->bind_param('ss', $username, $email);
         $stmt->execute();
         $stmt->store_result();
