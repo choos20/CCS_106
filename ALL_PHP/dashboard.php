@@ -697,6 +697,7 @@ $conn->close();
           <option value="14.mp3">14 Silent Sanctuary</option>
           <option value="multo.mp3">Multo</option>
           <option value="yayoi.mp3">Yayoi</option>
+          <option value="magbalik.mp3">Magbalik</option>
         </select>
       </div>
       <div class="setting-box">
